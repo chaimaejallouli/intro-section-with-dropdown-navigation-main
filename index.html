@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="//unpkg.com/alpinejs" defer></script>
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <style>
+     * {
+            font-family: "Epilogue", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 500;
+            font-style: normal;
+        }
+
+        h1 {
+            font-family: "Epilogue", sans-serif;
+        }
+  </style>
+  <title>Frontend Mentor | Intro section with dropdown navigation</title>
+
+  
+</head>
+<body>
+      <nav class="flex justify-between bg-white p-4 hidden md:block">
+        <div>
+          <div class="flex items-center">
+            <div class="flex items-center"><img class="w-18" src="images/logo.svg" alt=""></div>
+            <div  x-data="{show:false}">
+              <button x-on:click="show = !show" class="m-2 flex">
+                <p>Features
+                  <img x-show="show == false" src="images/icon-arrow-down.svg" alt="">
+                  <img x-show="show == true" src="images/icon-arrow-up.svg" alt="">
+                </p>
+              </button>
+              <div x-show="show" class="bg-white absolute bg-white border-solid border-2 rounded drop-shadow-2xl border-current ">
+                <p class="flex">
+                  <img src="images/icon-todo.svg" class="mr-2 mb-3 mt-1" alt="">todo list
+                </p>
+                <p class="flex">
+                  <img class="flex" src="images/icon-calendar.svg" class="mr-2 mb-3 mt-1" alt=""><span class="float-right">Calendier</span>
+                </p>
+                <p class="flex">
+                  <img src="images/icon-reminders.svg" class="mr-2 mb-3 mt-1" alt="">reminder
+                </p>
+                <p class="flex">
+                  <img src="images/icon-planning.svg" class="mr-2 mb-3 mt-1" alt="">planning
+                </p>
+              </div>
+            </div>
+            <div x-data="{show:false}">
+              <button x-on:click="show = !show" class="m-2 flex ">
+                <p>Company
+                  <img x-show="show == false" src="images/icon-arrow-down.svg" alt="">
+                  <img x-show="show == true" src="images/icon-arrow-up.svg" alt="">
+              </button>
+              <div x-show="show" class="absolute bg-white border-solid border-2 rounded drop-shadow-2xl border-gray-400">
+                <p>history
+                </p>
+                <p>
+                  our tems
+                </p>
+                <p>
+                  blog
+                </p>
+              </div>
+            </div>
+            <div class="flex flex-between ">
+              <button class="m-2 flex ">Careers</button>
+              <button class="m-2 flex ">About</button>
+            </div>
+            <div>
+              <div class="flex flex-between items-center px-96">
+                <button class="m-2 hover:text-black font-medium text-xm text-[#696969]">Login</button>
+                <button class="m-2 px-3 py-2 rounded-xl font-medium text-xm text-[#696969] border-solid border-2 border-gray-400 hover:text-black  hover:border-black">Register</button>
+              </div>
+            </div>
+          </div>
+        </div>
+    </nav>
+    <!--nav __________________________________Mobile-->
+    <nav x-data="{open : false}" class=" flex justify-between p-8 block md:hidden">
+      <img src="./images/logo.svg" class="relative">
+      <button x-on:click="open = !open" >
+          <img x-show="open == false" src="./images/icon-menu.svg"
+              class="object-cover w-4 h-full w-full bg-white"><br>
+      </button>
+      <div class=" block bg-black" x-show="open == true">
+
+          <nav x-data="{datanav : false}" class=" w-3/4 h-full fixed bg-white top-0 right-0 pl-6 items-start text-start  ">
+              <div class="flex justify-end ">
+                  <button x-on:click="open = !open" >
+                      <img x-show="open == true" src="./images/icon-close-menu.svg"
+                          class="object-cover w-4 h-full w-full p-2">
+                  </button>
+              </div>
+              <div class="py-2">
+                  <button x-on:click="datanav = !datanav" class=" flex  text-[#696969]  font-medium text-xm "
+                      >
+                      Features
+                      <img x-show="datanav == false" src="./images/angle-arrow-down_icon-icons.com_73683.png"
+                          class="ml-3 object-cover my-1  h-3 w-3 ">
+                      <img x-show="datanav == true" src="./images/up-arrow_icon-icons.com_73351.png"
+                          class="ml-3 object-cover mb-2  h-3 w-3 ">
+                  </button>
+                  <ul x-show="datanav " class="px-3 py-1   rounded-xl items-center">
+                      <span class="flex"><img class="mr-2 mb-3 mt-1" src="./images/icon-todo.svg">Todo List</span>
+                      <span class="flex"><img class="mr-3 mb-3 mt-1" src="./images/icon-calendar.svg">Calendar</span>
+                      <span class="flex"><img class="mr-3 mb-3 mt-1"
+                              src="./images/icon-reminders.svg">Reminders</span>
+                      <span class="flex"><img class="mr-3 mb-3 mt-1" src="./images/icon-planning.svg">Planning</span>
+                  </ul>
+              </div>
+
+              <div x-data="{open : false}" class="py-2">
+                  <button x-on:click="open = !open" class=" flex  text-[#696969]  font-medium text-xm " >
+                      Company
+                      <img x-show="open == false" src="./images/angle-arrow-down_icon-icons.com_73683.png"
+                          class="ml-3 object-cover my-1  h-3 w-3 ">
+                      <img x-show="open == true" src="./images/up-arrow_icon-icons.com_73351.png"
+                          class="ml-3 object-cover mb-2  h-3 w-3 ">
+                  </button>
+                  <ul x-show="open " class="px-3 py-1  rounded-xl items-center">
+                      <span class="">History</span><br>
+                      <span class="">Our Team</span><br>
+                      <span class="">Blog</span>
+                  </ul>
+              </div>
+              <div>
+                  <span class="py-2  text-[#696969]  font-medium text-xm">Careers</span><br>
+                  <span
+                      class="my-2  text-[#696969]  font-medium text-xm hover:cursor-pointer hover:text-black">About</span><br>
+              </div>
+              <div class="text-center ">
+                  <span class=" font-medium text-xm text-[#696969]  hover:text-black  mb-5 ">Login</span><br>
+                  <span
+                      class="font-medium text-xm text-[#696969]  border hover:text-black  hover:border-black  border-[#696969] rounded-xl border-solid px-4 py-2 ">Register</span>
+              </div>
+          </nav>
+      </div>
+
+  </nav>
+    <main class="p-12 hidden md:block">
+      <div class="container mx-auto p-8"> 
+        <div class="flex flex-wrap justify-between items-center ">
+          <div class="w-1/2 mt-24"> 
+            <h1 class="font-bold text-5xl mb-4">Make remote work</h1>
+            <p class="font-normal text-lg mb-4">Get your team in sync, no matter your location. Streamline processes, create team rituals, and watch productivity soar.</p> <!-- Increasing text size -->
+            <button class="bg-black hover:bg-black text-white font-bold py-2 px-4 rounded">Learn more</button> <!-- Adding background color and hover effect -->
+          </div>
+          <div class="w-1/2 mr-50 h-24 ">
+            <img class="rounded-l-2xl w-64 mb-96" dir="rtl" src="images/image-hero-desktop.png" alt="">
+          </div>
+          <div class="flex justify-between mt-40 "> 
+            <div><img src="images/client-databiz.svg" alt="" class="m-2"></div>
+            <div><img src="images/client-audiophile.svg" alt="" class="m-2"></div>
+            <div><img src="images/client-meet.svg" alt="" class="m-2"></div>
+            <div><img src="images/client-maker.svg" class="m-2" alt=""></div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- main ------------------------------mobiles-->
+    <main class="  items-center text-center w-80 right-0 w-screen block md:hidden">
+      <img src="./images/image-hero-mobile.png" class=" w-4/5 h-60 ml-5 mb-9 object-cover ">
+      <div>
+          <div class="font-bold text-6xl  ">
+              <h1>Make</h1>
+              <h1>remote work</h1>
+          </div>
+          <p class="text-[#696969]  font-medium ">Get your team in sync, no matter your
+              location. Streamline
+              processes,
+              create team rituals, and watch productivity soar.</p>
+
+          <button
+              class="my-10 border font-normal rounded-xl border-solid px-5 py-2 bg-[#141414] text-white text-md">Learn
+              more</button>
+          <div class="flex ">
+              <img src="./images/client-databiz.svg" class="mr-8 w-16 h-6">
+              <img src="./images/client-audiophile.svg" class="mr-8 w-16 h-6">
+              <img src="./images/client-meet.svg" class="mr-8 w-16 h-6">
+              <img src="./images/client-maker.svg" class=" w-16 h-6">
+          </div>
+      </div>
+  </main>
+    
+</body>
+</html>
